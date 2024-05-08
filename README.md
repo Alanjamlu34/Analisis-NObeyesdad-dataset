@@ -19,7 +19,7 @@ Dikutip dari jurnal yang ditulis oelh Winne Widiantini, pada tahun 2008, sekitar
 - Menggunakan model yang tersedia melalui proses analisis untuk mengklasifikasikan kategori obesitas yang ada berdasarkan model yang telah dibuat.
 
 ## Data Understanding
-Dataset ini adalah dataset yang diambil dari [Kagle]( https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels) berdasarkan paper dari Fabio MendozaPalecho dan Alexis de la Hoz Manotas yang bertujuan untuk meneliti pengaruh gaya hidup dan beberapa faktor lain terhadap obesitas di negara Meksiko, Peru dan Colombia dengan jumlah sample 2111 dan 17 atribut.
+Dataset ini adalah dataset yang diambil dari [Kagle]( https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels) berdasarkan jurnal dari Fabio MendozaPalecho dan Alexis de la Hoz Manotas yang bertujuan untuk meneliti pengaruh gaya hidup dan beberapa faktor lain terhadap obesitas di negara Meksiko, Peru dan Colombia dengan jumlah sample 2111 dan 17 atribut.
 
 Download dataset   : https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels
 
@@ -43,19 +43,17 @@ Variabel/atribut pada dataset ini adalah sebagai berikut:
 - Obesity Level (Tingkat Obesitas): Menyatakan tingkat obesitas individu (misalnya, “Kurang Berat Badan”, “Normal”, “Obesitas Kelas I”, dll.).
 
 ## Data Preparation
-Data preparation dibagi menjadi 2. Hal ini bertujuan untuk memudahkan analisis dengan mengeliminasi kolom (atribut) yang tidak memiliki hubungan atau hubungannya kecil sekali terhadap perubahan nilai obesitas (NObeyesdad) dan merubah Dtype Object menjadi Float dengan Encoding. Setelah atribut yang digunakan telah disederhanakan, lanjutkan ke tahap berikutnya.
+Berikut adalah teknik-teknik yang digunakan pada tahap ini:
 - Encoding: Proses ini mengubah variabel dengan `Dtype: Object` menjadi `float` dengan mengubah nilainya (merepresentasikan) menjadi angka agar dapat dianalisis korelasinya.
 - Correlation: Proses ini bertujuan untuk melihat korelasi/hubungan setiap variabel dengan variabel NObeyesdad. Akan diambil korelasi yang cukup signifikan (corr>0.2 atau corr<-0.2) dan mengeliminasi atribut yang tidak memenuhi kriteria tersebut. Berikut adalah variabel yang tidak/kurang berpengaruh pada variabel NObeyesdad: `['Gender', 'FAVC', 'FCVC', 'NCP', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS']`. Jika dilihat, Variabel "Height" memiliki korelasi <0.2 dan >-0.2 namun tidak dieliminasi. Hal ini dikarenakan dalam melihat tingkat obesitas sesorang, rasio tinggi badan dan berat badan sangat penting untuk dilihat meskipun tidak ada korelasi antar keduanya. Sederhananya, semakin tinggi seseorang tidak berarti dia semakin gemuk (obesitas), tetapi "secara sederhana" perbandingan antar berat badan dan tinggilah yang akan menentukannya.
 - Dimention Reduction with PCA: Proses ini mereduksi variabel 'Height' dan 'Weight' menjadi satu variabel dengan nama 'dimensi'.
 
-### Pembagian Train-Test
-- Membagi dataset menjadi data latih (train) dan data uji (test) dengan proporsi 80:20. Hasilnya adalah:\
+- Train-Test-Split: Membagi dataset menjadi data latih (train) dan data uji (test) dengan proporsi 80:20. Hasilnya adalah:\
   Total # of sample in whole dataset: 2111\
   Total # of sample in train dataset: 1899\
   Total # of sample in test dataset: 21
 
-### Standarisasi
-- Proses standarisasi menggunakan `Standardscaler()`: Proses scaling dan standarisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma.
+- Standaritation: Proses standarisasi menggunakan `Standardscaler()`: Proses scaling dan standarisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma.
 
 ## Model Development
 Pada tahap ini, akan dikembangkan model machine learning dengan tiga algoritma. Kemudian, akan dilakukan evaluasi performa masing-masing algoritma dan menentukan algoritma mana yang memberikan hasil prediksi terbaik. Ketiga algoritma yang akan digunakan, antara lain:
@@ -108,18 +106,18 @@ Setelah melakukan perhitungan metriks dengan MSE, hasilnya adalah sebagai beriku
 | KNN      | 1.261564 | 1.522972 |
 | RF       | 0.202345 | 1.202889 |
 | Boosting | 1.856123 | 2.145006 |
-tabel 1. Hasil metriks MSE
+Tabel 1. Hasil metriks MSE
       
 Perhatikan plot berikut sebagai representasi dari data di atas
   ![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/0218dbb5-d2ba-484a-a4b6-0a3b6d9b9774)\
 Gambar 1. Plot MSE train-test
 
 Dari gambar di atas, terlihat bahwa, model _Random Forest_ (RF) memberikan nilai eror yang paling kecil. Sedangkan model dengan algoritma _Boosting_ memiliki eror yang paling besar (berdasarkan grafik, angkanya di atas 2.0). Sehingga model RF yang akan dipilih sebagai model terbaik untuk melakukan prediksi tingkat obesitas.
-
-
-  |     | y_ture | prediksi_KNN | prediksi_RF | prediksi_Bossting |
+  |     | y_true | prediksi_KNN | prediksi_RF | prediksi_Bossting |
   |-----|--------|--------------|-------------|-------------------|
   | 600 | 0      | 0.0          | 0.0         | 0.1               |
+  
+  Tabel 2. Hasil prediksi
 
 1. y_true:
     - Nilai ini menunjukkan target aktual (nilai sebenarnya) dari data uji pada baris ke-600. Dalam kasus ini, nilai target aktual adalah 0.
