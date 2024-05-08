@@ -93,7 +93,6 @@ $$
 \text{MSE} = \frac{1}{N} \sum_{i=1}^n (y_i - \hat{y}_{\text{pred}_i})^2
 $$
 
-
 _Keterangan:_
 
 _N = jumlah dataset_
