@@ -108,6 +108,7 @@ Setelah melakukan perhitungan metriks dengan MSE, hasilnya adalah sebagai beriku
 | KNN      | 1.261564 | 1.522972 |
 | RF       | 0.202345 | 1.202889 |
 | Boosting | 1.856123 | 2.145006 |
+
 Tabel 1. Hasil metriks MSE
       
 Perhatikan plot berikut sebagai representasi dari data di atas
