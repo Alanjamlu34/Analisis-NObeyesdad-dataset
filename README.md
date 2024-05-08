@@ -5,7 +5,7 @@ Jumlah penderita obesitas di seluruh dunia lebih dari satu miliar orang. Berdasa
 Secara global, angka obesitas di kalangan anak-anak dan remaja meningkat empat kali lipat dari tahun 1990 hingga 2022, sementara angka obesitas di kalangan orang dewasa meningkat lebih dari dua kali lipat. Penelitian ini juga mengungkapkan bahwa tingkat anak-anak dan remaja yang mengalami kekurangan berat badan menurun pada periode yang sama, dan penurunannya lebih dari separuh di antara orang dewasa di seluruh dunia. Oleh karena itu, obesitas saat ini menjadi bentuk malnutrisi yang paling umum di banyak negara.
 Dari masalah tersebut, menggunakan dataset Obesity Levels & Life Style dari kagle, dapat dilihat aspek mana saja yang memberikan pengaruh besar pada tingkat obesitas sehingga dapat dihindari sehingga dapat melakukan pencegahan dini.
 
-Pada tahun 2008, sekitar 2,8 juta orang dewasa meninggal akibat obesitas, sekitar 300 juta orang yang secara klinis tergolong obesitas yang merupakan penyokong utama penyakit degeneratif seperti diabetes, penyakit jantung, dan kanker[2]. Dari dataset Obesity Levels & Life Style, _machine learning_ dapat digunakan untuk menganalisis faktor-faktor yang paling berpengaruh dalam peningkatan obesitas seseorang dan model tersebut juga dapat digunakan untuk memprediksi data yang serupa kedepannya.
+Pada tahun 2008, sekitar 2,8 juta orang dewasa meninggal akibat obesitas, sekitar 300 juta orang yang secara klinis tergolong obesitas yang merupakan penyokong utama penyakit degeneratif seperti diabetes, penyakit jantung, dan kanker[1]. Dari dataset Obesity Levels & Life Style, _machine learning_ dapat digunakan untuk menganalisis faktor-faktor yang paling berpengaruh dalam peningkatan obesitas seseorang dan model tersebut juga dapat digunakan untuk memprediksi data yang serupa kedepannya.
 
 
 
@@ -19,7 +19,7 @@ Pada tahun 2008, sekitar 2,8 juta orang dewasa meninggal akibat obesitas, sekita
 - Menggunakan model yang tersedia melalui proses analisis untuk mengklasifikasikan kategori obesitas yang ada berdasarkan model yang telah dibuat.
 
 ## Data Understanding
-Dataset ini adalah dataset yang diambil dari [Kagle]( https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels) berdasarkan jurnal dari Fabio MendozaPalecho dan Alexis de la Hoz Manotas yang bertujuan untuk meneliti pengaruh gaya hidup dan beberapa faktor lain terhadap obesitas di negara Meksiko, Peru dan Colombia dengan jumlah sample 2111 dan 17 atribut.
+Dataset ini adalah dataset yang diambil dari [Kagle]( https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels) berdasarkan jurnal dari Fabio MendozaPalecho dan Alexis de la Hoz Manotas yang bertujuan untuk meneliti pengaruh gaya hidup dan beberapa faktor lain terhadap obesitas di negara Meksiko[2], Peru dan Colombia dengan jumlah sample 2111 dan 17 atribut.
 
 Download dataset   : https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels
 
@@ -94,25 +94,14 @@ Ketiga algoritma yang akan digunakan, antara lain:
 3. _Random Forest_
 
    _Random Forest_ adalah sebuah metode ensemble yang menggabungkan beberapa decision tree regressors untuk memprediksi nilai kontinu (misalnya, harga rumah, suhu, dll.).
-   Setiap decision tree dalam forest memproses sub-sampel dari dataset dan menghasilkan prediksi. _Random Forest_ mengatasi masalah overfitting yang sering terjadi pada single decision tree.
-   Akhirnya, hasil prediksi dari semua trees digabungkan (dengan cara rata-rata) untuk menghasilkan prediksi akhir.
-   - Inisialisasi model: setelah import library yang diperlukan, Selanjutnya, membuat objek model RF dengan menginstansiasi RandomForestRegressor. Berikut beberapa parameter yang diatur yaitu:
-      - `n_estimators= 50`: Jumlah trees dalam forest terdiri dari 50 pohon. Semakin banyak trees, semakin baik performanya, tetapi juga semakin lambat komputasinya.
-      - `max_depth= 16`: Maksimum kedalaman setiap tree. Artinya, setiap pohon akan memiliki kedalaman maksimum 16.
-      - `random_state= 55`: Nilai ini memastikan hasil yang konsisten setiap kali model dijalankan.
-      - `n_jobs= -1` : Nilai -1 pada parameter ini menunjukkan bahwa semua CPU yang tersedia akan digunakan untuk menghitung pohon-pohon dalam _Random Forest_ secara paralel. Ini akan mempercepat proses pelatihan model.
-    - Pelatihan Model: Model dilatih dengan memanggil metode `.fit(X_train, y_train)`, di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan.
-    - Evaluasi Model: Akhirnya, dihitung _mean squared error_(MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris `train_mse` dan kolom `RandomForest`.
+   Setiap decision tree dalam forest memproses sub-sampel dari dataset dan menghasilkan prediksi. _Random Forest_ mengatasi masalah overfitting yang sering terjadi pada single decision tree. Akhirnya, hasil prediksi dari semua trees digabungkan (dengan cara rata-rata) untuk menghasilkan prediksi akhir. Setelah import library yang diperlukan, Selanjutnya, membuat objek model RF dengan menginstansiasi RandomForestRegressor. Berikut beberapa parameter yang diatur yaitu n_estimators= 50.Jumlah trees dalam forest terdiri dari 50 pohon. Semakin banyak trees, semakin baik performanya, tetapi juga semakin lambat komputasinya. Parameter max_depth= 16 merupakan maksimum kedalaman setiap tree. Artinya, setiap pohon akan memiliki kedalaman maksimum 16. Parameter random_state= 55 merupakan parameter yang memastikan hasil yang konsisten setiap kali model dijalankan dan nilai -1 pada parameter n_jobs= -1 menunjukkan bahwa semua CPU yang tersedia akan digunakan untuk menghitung pohon-pohon dalam _Random Forest_ secara paralel. Ini akan mempercepat proses pelatihan model.
+    Setelah nilai parameter ditentukan, model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan. Akhirnya, dihitung _mean squared error_(MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris train_mse dan kolom RandomForest.
   4. _Boosting Algorithm_
 
      AdaBoostRegressor adalah algoritma ensemble yang digunakan untuk memperbaiki performa model regresi. Berikut adalah penjelasan singkat mengenai AdaBoostRegressor:
      AdaBoostRegressor adalah metode_Boosting_ yang menggabungkan beberapa model regresi sederhana (biasanya decision trees) menjadi satu model yang lebih kuat.
-    Algoritma ini bekerja dengan menggabungkan hasil dari model-model yang lemah untuk menghasilkan prediksi yang lebih akurat.
-    - Inisialisasi Model: Selanjutnya, kita membuat objek model  _boosting_ dengan menginstansiasi `AdaBoostRegressor`. Beberapa parameter yang diatur:
-      - `learning_rate= 0.05`: Nilai ini mengontrol seberapa besar kontribusi setiap model lemah terhadap model akhir. Semakin kecil nilai ini, semakin lambat konvergensi model.
-      - `random_state= 55`: Parameter ini menentukan inisialisasi random state untuk memastikan hasil yang konsisten pada setiap eksekusi.
-    - Pelatihan Model: Model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan.
-    - Evaluasi Model: Akhirnya, dihitung _mean squared error_ (MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris ‘train_mse’ dan kolom ‘ _boosting_’.
+    Algoritma ini bekerja dengan menggabungkan hasil dari model-model yang lemah untuk menghasilkan prediksi yang lebih akurat. Langkah awal adalah dengan inisiasi Model: Selanjutnya, dibuatkan objek model _boosting_ dengan menginstansiasi AdaBoostRegressor. Beberapa parameter yang diatur seperti learning_rate= 0.05: Nilai ini mengontrol seberapa besar kontribusi setiap model lemah terhadap model akhir. Semakin kecil nilai ini, semakin lambat konvergensi model. random_state= 55: Parameter ini menentukan inisialisasi random state untuk memastikan hasil yang konsisten pada setiap eksekusi. Setelah menetapkan nilai parameter, model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan.
+    Akhirnya, dihitung _mean squared error_ (MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris ‘train_mse’ dan kolom ‘ _boosting_’.
 
 ## Evaluasi Model
 Metrik yang digunakan adalah _Mean Squarre Error_ (MSE) yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut
@@ -165,6 +154,8 @@ Jadi, hasil analisis mendapatkan 5 variabel yang berpengaruh pada tingkat obesit
 
 
 ## Daftar Pustaka
-[1]: Palechor, Fabio Mendoza, dan Alexis de la Hoz Manotas. “_Dataset for estimation of obesity levels based on eating habits and physical condition in individuals from Colombia, Peru, and Mexico._” Universidad de la Costa, CUC, Colombia, Vol. 25, 2019.
+[1] Widiantini, Winne dan Zarfiel Tafal. “Aktivitas Fisik, Stres, dan Obesitas pada Pegawai Negeri Sipil.” _Jurnal Kesehatan Masyarakat Nasional (Kesmas)_, Vol. 8, No. 7, 2014.
 
-[2]: Widiantini, Winne dan Zarfiel Tafal. “Aktivitas Fisik, Stres, dan Obesitas pada Pegawai Negeri Sipil.” _Jurnal Kesehatan Masyarakat Nasional (Kesmas)_, Vol. 8, No. 7, 2014.
+[2] Palechor, Fabio Mendoza, dan Alexis de la Hoz Manotas. “_Dataset for estimation of obesity levels based on eating habits and physical condition in individuals from Colombia, Peru, and Mexico._” Universidad de la Costa, CUC, Colombia, Vol. 25, 2019.
+
+
