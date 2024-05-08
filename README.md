@@ -89,7 +89,10 @@ Pada tahap ini, akan dikembangkan model machine learning dengan tiga algoritma. 
 ## Evaluasi Model
 Metrik yang digunakan adalah Mean Squarre Error (MSE) yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut
 
-$MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_{\text{pred}_ i})^2$
+$$
+\text{MSE} = \frac{1}{N} \sum_{i=1}^n (y_i - \hat{y}_{\text{pred}_i})^2
+$$
+
 
 _Keterangan:_
 
