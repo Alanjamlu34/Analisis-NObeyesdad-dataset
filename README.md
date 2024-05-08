@@ -1,27 +1,25 @@
 # Laporan Proyek Machine Learning - Paulinus Alan Sanjaya Jamlu
 ## Domain Proyek
-Jumlah penderita obesitas di seluruh dunia lebih dari [satu miliar orang](https://www.kompas.com/global/read/2024/03/01/115505570/jumlah-penderita-obesitas-di-seluruh-dunia-lebih-dari-1-miliar). Berdasarkan penelitian yang dipublikasikan dalam jurnal The Lancet, data dari tahun 2022 hingga tahun terakhir yang dimasukkan dalam analisis menunjukkan bahwa ada 879 juta orang dewasa dan 159 juta anak-anak yang mengalami obesitas atau kelebihan berat badan.
+Jumlah penderita obesitas di seluruh dunia lebih dari satu miliar orang. Berdasarkan penelitian yang dipublikasikan dalam jurnal The Lancet, data dari tahun 2022 hingga tahun terakhir yang dimasukkan dalam analisis menunjukkan bahwa ada 879 juta orang dewasa dan 159 juta anak-anak yang mengalami obesitas atau kelebihan berat badan.
 
-Secara global, angka obesitas di kalangan anak-anak dan remaja meningkat empat kali lipat dari tahun [1990 hingga 2022](https://www.kompas.com/sains/read/2022/03/08/090300523/waspada-obesitas-banyak-dialami-orang-usia-muda-ini-penjelasannya), sementara angka obesitas di kalangan orang dewasa meningkat lebih dari dua kali lipat. Penelitian ini juga mengungkapkan bahwa tingkat anak-anak dan remaja yang mengalami kekurangan berat badan menurun pada periode yang sama, dan penurunannya lebih dari separuh di antara orang dewasa di seluruh dunia. Oleh karena itu, obesitas saat ini menjadi bentuk malnutrisi yang paling umum di banyak negara.
+Secara global, angka obesitas di kalangan anak-anak dan remaja meningkat empat kali lipat dari tahun 1990 hingga 2022, sementara angka obesitas di kalangan orang dewasa meningkat lebih dari dua kali lipat. Penelitian ini juga mengungkapkan bahwa tingkat anak-anak dan remaja yang mengalami kekurangan berat badan menurun pada periode yang sama, dan penurunannya lebih dari separuh di antara orang dewasa di seluruh dunia. Oleh karena itu, obesitas saat ini menjadi bentuk malnutrisi yang paling umum di banyak negara.
+Dari masalah tersebut, menggunakan dataset Obesity Levels & Life Style dari kagle, dapat dilihat aspek mana saja yang memberikan pengaruh besar pada tingkat obesitas sehingga dapat dihindari dan anda dapat melihat apakah anda mengalami obesitas atau tidak berdasarkan hasil analisis dari dataset tersebut.
 
-Dari masalah tersebut, menggunakan dataset Obesity Levels & Life Style dari kagle, kita dapat melihat aspek mana saja yang memberikan pengaruh besar pada tingkat obesitas sehingga dapat dihindari dan anda dapat melihat apakah anda mengalami obesitas atau tidak berdasarkan hasil analisis dari dataset tersebut.
+Dikutip dari jurnal yang ditulis oelh Winne Widiantini, pada tahun 2008, sekitar 2,8 juta orang dewasa meninggal akibat obesitas, sekitar 300 juta orang yang secara klinis tergolong obesitas yang merupakan penyokong utama penyakit degeneratif seperti diabetes, penyakit jantung, dan kanker. Dari dataset Obesity Levels & Life Style, _machine learning_ dapat digunakan untuk menganalisis faktor-faktor yang paling berpengaruh dalam peningkatan obesitas seseorang dan model tersebut juga dapat digunakan untuk memprediksi data yang serupa kedepannya.
 
-Sumber:
-- https://www.kompas.com/global/read/2024/03/01/115505570/jumlah-penderita-obesitas-di-seluruh-dunia-lebih-dari-1-miliar
-- https://www.kompas.com/sains/read/2022/03/08/090300523/waspada-obesitas-banyak-dialami-orang-usia-muda-ini-penjelasannya
-- https://dunia.tempo.co/read/1839971/who-lebih-dari-satu-miliar-orang-di-dunia-obesitas
+
 
 ## Business Understanding
 ### Problem Statements
-- Variabel mana saja yang paling mempengaruhi tingkat obesitas seseorang?
-- Berdasarkan _life style_ saya, saya masuk ke kategori obesitas mana?
+- Variabel apa yang paling mempengaruhi tingkat obesitas seseorang?
+- Dapatkan model _machine learning_ mengklasifikasikan tingkat obesitas seseorang dengan data baru?
 
 ### Goals
-- Menganalisis pengaruh setiap variabel dan mengeliminasi variabel yang tidak berpengaruh atau pengaruhnya tidak signifikan terhapat perubahan tingkat obesitas
-- Mneggunakan model yang tersedia melalui proses analisis untuk mengklasifikasikan kategori obesitas yang ada berdasarkan model yang telah dibuat
+- Menganalisis pengaruh setiap variabel dan mengeliminasi variabel yang tidak berpengaruh atau pengaruhnya tidak signifikan terhapat perubahan tingkat obesitas. Signifikan yang dimaksud adalah, apakah variabel tersebut berpengaruh pada tingkat obesitas atau tidak atau seberapa besar perubahan obesitas jika variabel tersebut berubah.
+- Menggunakan model yang tersedia melalui proses analisis untuk mengklasifikasikan kategori obesitas yang ada berdasarkan model yang telah dibuat.
 
 ## Data Understanding
-Dataset ini adalah dataset yang diambil dari [Kagle]( https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels) berdasarkan paper dari [Fabio MendozaPalecho dan Alexis de la HozManotas](https://www.sciencedirect.com/science/article/pii/S2352340919306985?via%3Dihub) yang bertujuan untuk meneliti pengaruh gaya hidup dan beberapa faktor lain terhadap obesitas di negara Meksiko, Peru dan Colombia dengan jumlah sample 2111 dan 17 atribut.
+Dataset ini adalah dataset yang diambil dari [Kagle]( https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels) berdasarkan paper dari Fabio MendozaPalecho dan Alexis de la Hoz Manotas yang bertujuan untuk meneliti pengaruh gaya hidup dan beberapa faktor lain terhadap obesitas di negara Meksiko, Peru dan Colombia dengan jumlah sample 2111 dan 17 atribut.
 
 Download dataset   : https://www.kaggle.com/datasets/fatemehmehrparvar/obesity-levels
 
@@ -45,31 +43,22 @@ Variabel/atribut pada dataset ini adalah sebagai berikut:
 - Obesity Level (Tingkat Obesitas): Menyatakan tingkat obesitas individu (misalnya, “Kurang Berat Badan”, “Normal”, “Obesitas Kelas I”, dll.).
 
 ## Data Preparation
-### Data Preparation 1
-Data preparation dibagi menjadi 2 (DP 1 dan DP 2). Hal ini bertujuan untuk memudahkan analisis dengan mengeliminasi kolom (atribut) yang tidak memiliki hubungan atau hubungannya kecil sekali terhadap perubahan nilai obesitas (NObeyesdad) dan merubah Dtype Object menjadi Float dengan Encoding. Setelah atribut yang digunakan telah disederhanakan, kita dapat melanjutkan ke tahap berikutnya.
+Data preparation dibagi menjadi 2. Hal ini bertujuan untuk memudahkan analisis dengan mengeliminasi kolom (atribut) yang tidak memiliki hubungan atau hubungannya kecil sekali terhadap perubahan nilai obesitas (NObeyesdad) dan merubah Dtype Object menjadi Float dengan Encoding. Setelah atribut yang digunakan telah disederhanakan, lanjutkan ke tahap berikutnya.
 - Encoding: Proses ini mengubah variabel dengan `Dtype: Object` menjadi `float` dengan mengubah nilainya (merepresentasikan) menjadi angka agar dapat dianalisis korelasinya.
-- Correlation: Proses ini bertujuan untuk melihat korelasi/hubungan setiap variabel dengan variabel NObeyesdad. Akan diambil korelasi yang cukup signifikan (corr>0.2 atau corr<-0.2) dan mengeliminasi atribut yang tidak memenuhi kriteria tersebut.
-- berikut adalah variabel yang tidak/kurang berpengaruh pada variabel NObeyesdad: `['Gender', 'FAVC', 'FCVC', 'NCP', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS']`
-- ![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/44012a28-69e0-400f-b671-b1d84f6276b1)
-- Jika dilihat, Variabel "Height" memiliki korelasi <0.2 dan >-0.2 namun tidak dieliminasi. Hal ini dikarenakan dalam melihat tingkat obesitas sesorang, rasio tinggi badan dan berat badan sangat penting untuk dilihat meskipun tidak ada korelasi antar keduanya. Sederhananya, semakin tinggi seseorang tidak berarti dia semakin gemuk (obesitas), tetapi "secara sederhana" perbandingan antar berat badan dan tinggilah yang akan menentukannya.
+- Correlation: Proses ini bertujuan untuk melihat korelasi/hubungan setiap variabel dengan variabel NObeyesdad. Akan diambil korelasi yang cukup signifikan (corr>0.2 atau corr<-0.2) dan mengeliminasi atribut yang tidak memenuhi kriteria tersebut. Berikut adalah variabel yang tidak/kurang berpengaruh pada variabel NObeyesdad: `['Gender', 'FAVC', 'FCVC', 'NCP', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS']`. Jika dilihat, Variabel "Height" memiliki korelasi <0.2 dan >-0.2 namun tidak dieliminasi. Hal ini dikarenakan dalam melihat tingkat obesitas sesorang, rasio tinggi badan dan berat badan sangat penting untuk dilihat meskipun tidak ada korelasi antar keduanya. Sederhananya, semakin tinggi seseorang tidak berarti dia semakin gemuk (obesitas), tetapi "secara sederhana" perbandingan antar berat badan dan tinggilah yang akan menentukannya.
+- Dimention Reduction with PCA: Proses ini mereduksi variabel 'Height' dan 'Weight' menjadi satu variabel dengan nama 'dimensi'.
 
-### Exploratory Data Analysis-Univariate Analysis
-- Melakukan proses analisis data dengan teknik Univariate EDA dengan membagi fitur pada dataset menjadi dua bagian, yaitu numerical features dan categorical features.
-- Proses ini bertujuan untuk mnghitung jumlah dan persentase sampel pada dataset dan memperoleh beberapa informasi seperti 'Height' memiliki distribusi normal dan jumlah sampel semakin menurun sejalan dengan bertambahnya usia.
-### Data Preparation 2
-- Reduksi Dimensi dengan PCA: Proses ini mereduksi variabel 'Height' dan 'Weight' menjadi satu variabel dengan nama 'dimensi'
-### Train-Test-Split
-- Membagi dataset menjadi data latih (train) dan data uji (test) dengan proporsi 80:20. Hasilnya adalah:
-  ```
-  Total # of sample in whole dataset: 2111
-  Total # of sample in train dataset: 1899
+### Pembagian Train-Test
+- Membagi dataset menjadi data latih (train) dan data uji (test) dengan proporsi 80:20. Hasilnya adalah:\
+  Total # of sample in whole dataset: 2111\
+  Total # of sample in train dataset: 1899\
   Total # of sample in test dataset: 21
-  ```
+
 ### Standarisasi
-- Proses standarisasi menggunakan  `Standardscaler()`: Proses scaling dan standarisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma.
+- Proses standarisasi menggunakan `Standardscaler()`: Proses scaling dan standarisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma.
 
 ## Model Development
-Pada tahap ini, kita akan mengembangkan model machine learning dengan tiga algoritma. Kemudian, kita akan mengevaluasi performa masing-masing algoritma dan menentukan algoritma mana yang memberikan hasil prediksi terbaik. Ketiga algoritma yang akan kita gunakan, antara lain:
+Pada tahap ini, akan dikembangkan model machine learning dengan tiga algoritma. Kemudian, akan dilakukan evaluasi performa masing-masing algoritma dan menentukan algoritma mana yang memberikan hasil prediksi terbaik. Ketiga algoritma yang akan digunakan, antara lain:
   - K-Nearest Neighbor
   - Random Forest
   - Boosting Algorithm
@@ -86,23 +75,23 @@ Pada tahap ini, kita akan mengembangkan model machine learning dengan tiga algor
    Akhirnya, hasil prediksi dari semua trees digabungkan (dengan cara rata-rata) untuk menghasilkan prediksi akhir.
    Random Forest mengatasi masalah overfitting yang sering terjadi pada single decision tree.
    Parameter dalam Kode:
-    - `n_estimators`: Jumlah trees dalam forest. Semakin banyak trees, semakin baik performanya, tetapi juga semakin lambat komputasinya.
-    - `max_depth`: Maksimum kedalaman setiap tree. Jika None, maka nodes akan terus diperluas hingga semua leaves murni atau hingga jumlah sampel di setiap leaf kurang dari min_samples_split.
-    - `min_samples_split`: Jumlah minimum sampel yang diperlukan untuk membagi internal node. Jika berupa bilangan bulat, maka jumlah minimum sampel. Jika berupa pecahan, maka jumlah minimum sampel dihitung berdasarkan fraksi dari total sampel.
-    - `min_samples_leaf`: Jumlah minimum sampel yang diperlukan di leaf node. Poin pemisahan hanya dipertimbangkan jika setidaknya ada jumlah sampel minimum di setiap cabang kiri dan kanan.
-    - `random_state`: Nilai ini memastikan hasil yang konsisten setiap kali model dijalankan.
+    - `n_estimators= 50`: Jumlah trees dalam forest terdiri dari 50 pohon. Semakin banyak trees, semakin baik performanya, tetapi juga semakin lambat komputasinya.
+    - `max_depth= 16`: Maksimum kedalaman setiap tree. Artinya, setiap pohon akan memiliki kedalaman maksimum 16.
+    - `random_state= 55`: Nilai ini memastikan hasil yang konsisten setiap kali model dijalankan.
+    - `n_jobs= -1` : Nilai -1 pada parameter ini menunjukkan bahwa semua CPU yang tersedia akan digunakan untuk menghitung pohon-pohon dalam random forest secara paralel. Ini akan mempercepat proses pelatihan model.
   4. Boosting Algorithm
 
      AdaBoostRegressor adalah algoritma ensemble yang digunakan untuk memperbaiki performa model regresi. Berikut adalah penjelasan singkat mengenai AdaBoostRegressor:
      AdaBoostRegressor adalah metode boosting yang menggabungkan beberapa model regresi sederhana (biasanya decision trees) menjadi satu model yang lebih kuat.
     Algoritma ini bekerja dengan menggabungkan hasil dari model-model yang lemah untuk menghasilkan prediksi yang lebih akurat.
 
-     - `learning_rate`: Nilai ini mengontrol seberapa besar kontribusi setiap model lemah terhadap model akhir. Semakin kecil nilai ini, semakin lambat konvergensi model.
-     - `random_state`: Parameter ini menentukan inisialisasi random state untuk memastikan hasil yang konsisten pada setiap eksekusi.
+     - `learning_rate= 0.05`: Nilai ini mengontrol seberapa besar kontribusi setiap model lemah terhadap model akhir. Semakin kecil nilai ini, semakin lambat konvergensi model.
+     - `random_state= 55`: Parameter ini menentukan inisialisasi random state untuk memastikan hasil yang konsisten pada setiap eksekusi.
+
 ## Evaluasi Model
 Metrik yang digunakan adalah Mean Squarre Error (MSE) yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut
 
-![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/32574f79-144a-4e6e-ac45-b8a9c237a4a0)
+$MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_{\text{pred}_ i})^2$
 
 _Keterangan:_
 
@@ -114,40 +103,24 @@ _y_pred = nilai prediksi_
 
 Setelah melakukan perhitungan metriks dengan MSE, hasilnya adalah sebagai berikut
 
-                      train	      test
-                  
-      KNN	        1.261564	1.522972
-      
-      RF	        0.202345	1.202889
-      
-      Boosting	1.856123	2.145006
+|          | train    | test     |
+|----------|----------|----------|
+| KNN      | 1.261564 | 1.522972 |
+| RF       | 0.202345 | 1.202889 |
+| Boosting | 1.856123 | 2.145006 |
+tabel 1. Hasil metriks MSE
       
 Perhatikan plot berikut sebagai representasi dari data di atas
-  ![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/0218dbb5-d2ba-484a-a4b6-0a3b6d9b9774)
-Dari gambar di atas, terlihat bahwa, model Random Forest (RF) memberikan nilai eror yang paling kecil. Sedangkan model dengan algoritma Boosting memiliki eror yang paling besar (berdasarkan grafik, angkanya di atas 2.0). Sehingga model RF yang akan kita pilih sebagai model terbaik untuk melakukan prediksi harga diamonds.
-Untuk mengujinya, mari kita buat prediksi menggunakan beberapa sample NObeyesdad dari data test.
-```
-prediksi = X_test.iloc[:1].copy()
-pred_dict = {'y_true':y_test[:1]}
-for name, model in model_dict.items():
-    pred_dict['prediksi_'+name] = model.predict(prediksi).round(1)
- 
-pd.DataFrame(pred_dict)
-```
-Kode di atas adalah bagian dari proses prediksi menggunakan model-model yang telah dilatih sebelumnya. Mari kita jelaskan secara singkat:
+  ![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/0218dbb5-d2ba-484a-a4b6-0a3b6d9b9774)\
+Gambar 1. Plot MSE train-test
 
-- Data Persiapan:
-  - prediksi = X_test.iloc[:1].copy(): Baris ini mengambil satu baris data dari X_test (data uji) dan membuat salinan (copy) dari baris tersebut.
-  - pred_dict = {'y_true':y_test[:1]}: Membuat sebuah kamus (dictionary) dengan kunci 'y_true' yang berisi nilai target aktual (y_test) untuk baris data yang sama.
-- Prediksi dengan Model:
-  - Loop for name, model in model_dict.items(): digunakan untuk mengiterasi melalui model-model yang ada dalam model_dict.
-  - pred_dict['prediksi_'+name] = model.predict(prediksi).round(1): Baris ini melakukan prediksi menggunakan model yang sedang diiterasi. Hasil prediksi dibulatkan ke satu desimal dan disimpan dalam pred_dict dengan kunci yang sesuai dengan nama model.
-- DataFrame Hasil Prediksi:
-  - pd.DataFrame(pred_dict): Mengubah pred_dict menjadi sebuah DataFrame yang menampilkan hasil prediksi dari semua model.
+Dari gambar di atas, terlihat bahwa, model _Random Forest_ (RF) memberikan nilai eror yang paling kecil. Sedangkan model dengan algoritma _Boosting_ memiliki eror yang paling besar (berdasarkan grafik, angkanya di atas 2.0). Sehingga model RF yang akan dipilih sebagai model terbaik untuk melakukan prediksi tingkat obesitas.
 
-    	      y_true	prediksi_KNN	prediksi_RF	prediksi_Boosting
-        600	0	  0.0	            0.0	           0.1
-    
+
+  |     | y_ture | prediksi_KNN | prediksi_RF | prediksi_Bossting |
+  |-----|--------|--------------|-------------|-------------------|
+  | 600 | 0      | 0.0          | 0.0         | 0.1               |
+
 1. y_true:
     - Nilai ini menunjukkan target aktual (nilai sebenarnya) dari data uji pada baris ke-600. Dalam kasus ini, nilai target aktual adalah 0.
 2. prediksi_KNN, prediksi_RF, dan prediksi_Boosting:
@@ -157,6 +130,12 @@ Kode di atas adalah bagian dari proses prediksi menggunakan model-model yang tel
       - Random Forest: Nilai prediksi dari model Random Forest juga adalah 0.0.
       - AdaBoost: Nilai prediksi dari model AdaBoost adalah 0.1.
         
-Pada baris ke-600, ketiga model memprediksi nilai target yang rendah (sekitar 0). Semua model tampaknya setuju bahwa nilai target sebenarnya adalah 0.
+Pada baris ke-600, ketiga model memprediksi nilai target yang rendah (sekitar 0). Semua model tampaknya setuju bahwa nilai target sebenarnya adalah 0. Dari hasil perhitungan MSE, berdasarkan plot dan hasil prediksi data test, kita dapat menyimpulkan bahwa algoritma Random Forest merupakan algoritma yang memiliki hasil paling optimal diikuti oleh KNN dan terakhir adalah Boosting Algorithm.
 
-Jadi, dari hasil perhitungan MSE, berdasarkan plot dan hasil prediksi data test, kita dapat menyimpulkan bahwa algoritma Random Forest merupakan algoritma yang memiliki hasil paling optimal diikuti oleh KNN dan terakhir adalah Boosting Algorithm.
+Jadi, hasil analisis mendapatkan 5 variabel yang berpengaruh pada tingkat obesitas seseorang yaitu umuir, berat badan, riwayat keluarga penderita obesitas dan konsumsi makanan selain makanan utama. Model juga dapat meprediksi tingkat obesitas dengan sangat baik sehingga model ini dapat digunakan untuk memprediksi tingkat obesitas dari data yang baru.
+
+
+## Daftar Pustaka
+Palechor, Fabio Mendoza, dan Alexis de la Hoz Manotas. “_Dataset for estimation of obesity levels based on eating habits and physical condition in individuals from Colombia, Peru, and Mexico._” Universidad de la Costa, CUC, Colombia, Vol. 25, 2019.
+
+Widiantini, Winne dan Zarfiel Tafal. “Aktivitas Fisik, Stres, dan Obesitas pada Pegawai Negeri Sipil.” _Jurnal Kesehatan Masyarakat Nasional (Kesmas)_, Vol. 8, No. 7, 2014.
