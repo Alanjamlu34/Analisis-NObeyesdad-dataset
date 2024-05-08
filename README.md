@@ -70,11 +70,15 @@ Dari tabel di atas, berikut adalah variabel yang tidak/kurang berpengaruh pada v
 `['Gender', 'FAVC', 'FCVC', 'NCP', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS']`.
 
  Jika dilihat, Variabel "Height" memiliki korelasi `0.2< corr_Height >-0.2` namun tidak dieliminasi. Hal ini dikarenakan dalam melihat tingkat obesitas seseorang, rasio tinggi badan dan berat badan sangat penting untuk dilihat meskipun tidak ada korelasi antar keduanya. Sederhananya, semakin tinggi seseorang tidak berarti dia semakin gemuk (obesitas), tetapi "secara sederhana" perbandingan antar berat badan dan tinggilah yang akan menentukannya.
+
 - Dimention Reduction with PCA: Proses ini mereduksi variabel 'Height' dan 'Weight' menjadi satu variabel dengan nama 'dimensi'.
 
-- Train-Test-Split: Membagi dataset menjadi data latih (train) dan data uji (test) dengan proporsi 80:20. Hasilnya adalah:\
-  Total # of sample in whole dataset: 2111\
-  Total # of sample in train dataset: 1899\
+- Train-Test-Split: Membagi dataset menjadi data latih (train) dan data uji (test) dengan proporsi 80:20. Hasilnya adalah:
+
+  Total # of sample in whole dataset: 2111
+
+  Total # of sample in train dataset: 1899
+
   Total # of sample in test dataset: 21
 
 - Standaritation: Proses standarisasi menggunakan `Standardscaler()`: Proses scaling dan standarisasi membantu untuk membuat fitur data menjadi bentuk yang lebih mudah diolah oleh algoritma.
@@ -83,72 +87,68 @@ Dari tabel di atas, berikut adalah variabel yang tidak/kurang berpengaruh pada v
 Pada tahap ini, akan dikembangkan model machine learning dengan tiga algoritma. Kemudian, akan dilakukan evaluasi performa masing-masing algoritma dan menentukan algoritma mana yang memberikan hasil prediksi terbaik. Nilai dari parameter pada ketiga algoritma ini diambil dengan pertimbangan _running time_ dari algoritma dan akurasinya. Setelah mencoba berbagai nilai parameter, didapat nilai parameter yang dirasa sudah cukup baik sesuai dengan yang digunakan dalam algoritma berikut.
 Ketiga algoritma yang akan digunakan, antara lain:
   -  _K-Nearest Neighbor_
-  - _Random Forest_
+  - *RFF*
   - _Boosting Algorithm_
+
 1. _K-Nearest Neighbor_
    
-   _KNN_ adalah algoritma yang relatif sederhana dibandingkan dengan algoritma lain. Algoritma _KNN_ menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. Dengan kata lain, setiap data baru diberi nilai berdasarkan seberapa mirip titik tersebut dalam set pelatihan.
-   `k = 10` tetangga dan metric Euclidean untuk mengukur jarak antara titik, lalu melatih data training dan menyimpan data testing untuk tahap evaluasi.
+   _KNN_ adalah algoritma yang relatif sederhana dibandingkan dengan algoritma lain. Algoritma _KNN_ menggunakan ‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. Dengan kata lain, setiap data baru diberi nilai berdasarkan seberapa mirip titik tersebut dalam set pelatihan. k = 10 tetangga dan metric Euclidean untuk mengukur jarak antara titik, lalu melatih data training dan menyimpan data testing untuk tahap evaluasi.
    Meskipun algoritma _KNN_ mudah dipahami dan digunakan, ia memiliki kekurangan jika dihadapkan pada jumlah fitur atau dimensi yang besar. Permasalahan ini sering disebut sebagai curse of dimensionality (kutukan dimensi). Pada dasarnya, permasalahan ini muncul ketika jumlah sampel meningkat secara eksponensial seiring dengan jumlah dimensi (fitur) pada data.
 
-3. _Random Forest_
+2. *RFF*
 
-   _Random Forest_ adalah sebuah metode ensemble yang menggabungkan beberapa decision tree regressors untuk memprediksi nilai kontinu (misalnya, harga rumah, suhu, dll.).
-   Setiap decision tree dalam forest memproses sub-sampel dari dataset dan menghasilkan prediksi. _Random Forest_ mengatasi masalah overfitting yang sering terjadi pada single decision tree. Akhirnya, hasil prediksi dari semua trees digabungkan (dengan cara rata-rata) untuk menghasilkan prediksi akhir. Setelah import library yang diperlukan, Selanjutnya, membuat objek model RF dengan menginstansiasi RandomForestRegressor. Berikut beberapa parameter yang diatur yaitu n_estimators= 50.Jumlah trees dalam forest terdiri dari 50 pohon. Semakin banyak trees, semakin baik performanya, tetapi juga semakin lambat komputasinya. Parameter max_depth= 16 merupakan maksimum kedalaman setiap tree. Artinya, setiap pohon akan memiliki kedalaman maksimum 16. Parameter random_state= 55 merupakan parameter yang memastikan hasil yang konsisten setiap kali model dijalankan dan nilai -1 pada parameter n_jobs= -1 menunjukkan bahwa semua CPU yang tersedia akan digunakan untuk menghitung pohon-pohon dalam _Random Forest_ secara paralel. Ini akan mempercepat proses pelatihan model.
-    Setelah nilai parameter ditentukan, model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan. Akhirnya, dihitung _mean squared error_(MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris train_mse dan kolom RandomForest.
-  4. _Boosting Algorithm_
+   *RFF* adalah sebuah metode ensemble yang menggabungkan beberapa decision tree regressors untuk memprediksi nilai kontinu (misalnya, harga rumah, suhu, dll.).
+   Setiap decision tree dalam forest memproses sub-sampel dari dataset dan menghasilkan prediksi. *RFF* mengatasi masalah overfitting yang sering terjadi pada single decision tree. Akhirnya, hasil prediksi dari semua trees digabungkan (dengan cara rata-rata) untuk menghasilkan prediksi akhir. Setelah import library yang diperlukan, Selanjutnya, membuat objek model RF dengan menginstansiasi RandomForestRegressor. 
+   Berikut beberapa parameter yang diatur yaitu n_estimators= 50.Jumlah trees dalam forest terdiri dari 50 pohon. Semakin banyak trees, semakin baik performanya, tetapi juga semakin lambat komputasinya. Parameter max_depth= 16 merupakan maksimum kedalaman setiap tree. Artinya, setiap pohon akan memiliki kedalaman maksimum 16. Parameter random_state= 55 merupakan parameter yang memastikan hasil yang konsisten setiap kali model dijalankan dan nilai -1 pada parameter n_jobs= -1 menunjukkan bahwa semua CPU yang tersedia akan digunakan untuk menghitung pohon-pohon dalam *RFF* secara paralel. Ini akan mempercepat proses pelatihan model.Setelah nilai parameter ditentukan, model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan. Akhirnya, dihitung _mean squared error_(MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris train_mse dan kolom RandomForest.
 
-     AdaBoostRegressor adalah algoritma ensemble yang digunakan untuk memperbaiki performa model regresi. Berikut adalah penjelasan singkat mengenai AdaBoostRegressor:
-     AdaBoostRegressor adalah metode_Boosting_ yang menggabungkan beberapa model regresi sederhana (biasanya decision trees) menjadi satu model yang lebih kuat.
-    Algoritma ini bekerja dengan menggabungkan hasil dari model-model yang lemah untuk menghasilkan prediksi yang lebih akurat. Langkah awal adalah dengan inisiasi Model: Selanjutnya, dibuatkan objek model _boosting_ dengan menginstansiasi AdaBoostRegressor. Beberapa parameter yang diatur seperti learning_rate= 0.05: Nilai ini mengontrol seberapa besar kontribusi setiap model lemah terhadap model akhir. Semakin kecil nilai ini, semakin lambat konvergensi model. random_state= 55: Parameter ini menentukan inisialisasi random state untuk memastikan hasil yang konsisten pada setiap eksekusi. Setelah menetapkan nilai parameter, model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan.
-    Akhirnya, dihitung _mean squared error_ (MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris ‘train_mse’ dan kolom ‘ _boosting_’.
+3. _Boosting Algorithm_
+    
+    AdaBoostRegressor adalah algoritma ensemble yang digunakan untuk memperbaiki performa model regresi. Berikut adalah penjelasan singkat mengenai AdaBoostRegressor: AdaBoostRegressor adalah metode*RFF* yang menggabungkan beberapa model regresi sederhana (biasanya decision trees) menjadi satu model yang lebih kuat. Algoritma ini bekerja dengan menggabungkan hasil dari model-model yang lemah untuk menghasilkan prediksi yang lebih akurat. Langkah awal adalah dengan inisiasi Model: Selanjutnya, dibuatkan objek model *RFF* dengan menginstansiasi AdaBoostRegressor. Beberapa parameter yang diatur seperti learning_rate= 0.05: Nilai ini mengontrol seberapa besar kontribusi setiap model lemah terhadap model akhir. Semakin kecil nilai ini, semakin lambat konvergensi model. random_state= 55: Parameter ini menentukan inisialisasi random state untuk memastikan hasil yang konsisten pada setiap eksekusi. Setelah menetapkan nilai parameter, model dilatih dengan memanggil metode .fit(X_train, y_train), di mana X_train adalah fitur dan y_train adalah target (label) dari data pelatihan. Akhirnya, dihitung _mean squared error_ (MSE) pada data pelatihan dan menyimpannya di dalam DataFrame models pada baris ‘train_mse’ dan kolom ‘ *RFF*’.
+
 
 ## Evaluasi Model
 Metrik yang digunakan adalah _Mean Squarre Error_ (MSE) yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut
-
 $$
 \text{MSE} = \frac{1}{N} \sum_{i=1}^n (y_i - \hat{y}_{\text{pred}_i})^2
 $$
 
 _Keterangan:_
 
-_N = jumlah dataset_
+*N = jumlah dataset*
 
-_y_i = nilai sebenarnya_
+*y_i* = nilai sebenarnya_
 
-_y_pred = nilai prediksi_
+*y_pred = nilai prediksi*
 
-Setelah melakukan perhitungan metriks dengan MSE, hasilnya adalah sebagai berikut
+Setelah melakukan perhitungan metriks dengan MSE, hasilnya adalah sebagai berikut:
 
 |          | train    | test     |
 |----------|----------|----------|
-|  _KNN_     | 1.261564 | 1.522972 |
-| _RF_      | 0.202345 | 1.202889 |
-|_Boosting_ | 1.856123 | 2.145006 |
+|  *KNN*     | 1.261564 | 1.522972 |
+| *RFF*      | 0.202345 | 1.202889 |
+|*RFF* | 1.856123 | 2.145006 |
 
 Tabel 2. Hasil metriks MSE
       
 Perhatikan plot berikut sebagai representasi dari data di atas
-  ![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/0218dbb5-d2ba-484a-a4b6-0a3b6d9b9774)\
+  ![image](https://github.com/Alanjamlu34/Analisis-NObeyesdad-dataset/assets/142156489/0218dbb5-d2ba-484a-a4b6-0a3b6d9b9774)
+
 Gambar 1. Plot MSE train-test
 
-Dari gambar di atas, terlihat bahwa, model __Random Forest__ (_RF_) memberikan nilai eror yang paling kecil. Sedangkan model dengan algoritma _Boosting_ memiliki eror yang paling besar (berdasarkan grafik, angkanya di atas 2.0). Sehingga model _RF_ yang akan dipilih sebagai model terbaik untuk melakukan prediksi tingkat obesitas.
-  |     | y_true | prediksi_ _KNN_| prediksi__RF_ | prediksi_Bossting |
+Dari gambar di atas, terlihat bahwa, model *Random Forest* (*RFF*) memberikan nilai eror yang paling kecil. Sedangkan model dengan algoritma *RFF* memiliki eror yang paling besar (berdasarkan grafik, angkanya di atas 2.0). Sehingga model *RFF* yang akan dipilih sebagai model terbaik untuk melakukan prediksi tingkat obesitas.
+  |     | y_true | prediksi_*KNN*| prediksi_*RFF* | prediksi_Bossting |
   |-----|--------|--------------|-------------|-------------------|
   | 600 | 0      | 0.0          | 0.0         | 0.1               |
   
   Tabel 3. Hasil prediksi
 
-1. y_true:
-    - Nilai ini menunjukkan target aktual (nilai sebenarnya) dari data uji pada baris ke-600. Dalam kasus ini, nilai target aktual adalah 0.
-2. prediksi_ _KNN_, prediksi__RF_, dan prediksi_  _boosting_:
-    - Nilai-nilai ini adalah hasil prediksi dari masing-masing model pada baris ke-600.
-    - Model-model yang digunakan:
-      - _KNN_ (_ _K-Nearest Neighbor_s_): Nilai prediksi dari model _KNN_ adalah 0.0.
-      - _Random Forest_: Nilai prediksi dari model _Random Forest_ juga adalah 0.0.
-      - AdaBoost: Nilai prediksi dari model AdaBoost adalah 0.1.
+1. y_true: Nilai ini menunjukkan target aktual (nilai sebenarnya) dari data uji pada baris ke-600. Dalam kasus ini, nilai target aktual adalah 0.
+2. prediksi_*KNN*, prediksi_*RF*, dan prediksi_*boosting*: Nilai-nilai ini adalah hasil prediksi dari masing-masing model pada baris ke-600. Model-model yang digunakan:
+    - _KNN_ (*K-Nearest Neighbors*): Nilai prediksi dari model _KNN_ adalah 0.0.
+    - *RFF*: Nilai prediksi dari model *RFF* juga adalah 0.0.
+    - AdaBoost: Nilai prediksi dari model AdaBoost adalah 0.1.
         
-Pada baris ke-600, ketiga model memprediksi nilai target yang rendah (sekitar 0). Semua model tampaknya setuju bahwa nilai target sebenarnya adalah 0. Dari hasil perhitungan MSE, berdasarkan plot dan hasil prediksi data test, dapat disimpulkan bahwa algoritma _Random Forest_ merupakan algoritma yang memiliki hasil paling optimal diikuti oleh _KNN_ dan terakhir adalah _Boosting Algorithm_.
+Pada baris ke-600, ketiga model memprediksi nilai target yang rendah (sekitar 0). Semua model tampaknya setuju bahwa nilai target sebenarnya adalah 0. Dari hasil perhitungan MSE, berdasarkan plot dan hasil prediksi data test, dapat disimpulkan bahwa algoritma *RFF* merupakan algoritma yang memiliki hasil paling optimal diikuti oleh _KNN_ dan terakhir adalah _Boosting Algorithm_.
 
 Jadi, hasil analisis mendapatkan 5 variabel yang berpengaruh pada tingkat obesitas seseorang yaitu umuir, berat badan, riwayat keluarga penderita obesitas dan konsumsi makanan selain makanan utama. Model juga dapat meprediksi tingkat obesitas dengan sangat baik sehingga model ini dapat digunakan untuk memprediksi tingkat obesitas dari data yang baru.
 
@@ -157,5 +157,6 @@ Jadi, hasil analisis mendapatkan 5 variabel yang berpengaruh pada tingkat obesit
 [1] Widiantini, Winne dan Zarfiel Tafal. “Aktivitas Fisik, Stres, dan Obesitas pada Pegawai Negeri Sipil.” _Jurnal Kesehatan Masyarakat Nasional (Kesmas)_, Vol. 8, No. 7, 2014.
 
 [2] Palechor, Fabio Mendoza, dan Alexis de la Hoz Manotas. “_Dataset for estimation of obesity levels based on eating habits and physical condition in individuals from Colombia, Peru, and Mexico._” Universidad de la Costa, CUC, Colombia, Vol. 25, 2019.
+
 
 
