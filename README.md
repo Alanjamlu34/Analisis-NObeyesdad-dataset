@@ -40,7 +40,7 @@ Variabel/atribut pada dataset ini adalah sebagai berikut:
 - Technology Use (Penggunaan Perangkat Teknologi): Menyatakan berapa lama individu menggunakan perangkat teknologi seperti ponsel, video game, televisi, komputer, dan lainnya.
 - Alcohol Consumption (Konsumsi Alkohol): Menyatakan seberapa sering individu mengonsumsi alkohol.
 - Transportation Mode (Transportasi yang Digunakan): Menyatakan jenis transportasi yang biasanya digunakan oleh individu.
-- Obesity Level (Tingkat Obesitas): Menyatakan tingkat obesitas individu (misalnya, “Kurang Berat Badan”, “Normal”, “Obesitas Kelas I”, dll.).
+- Obesity Level (Tingkat Obesitas): Menyatakan tingkat obesitas individu (misalnya, “Berat Badan Kurang”, “Normal”, “Obesitas Kelas I”, dll.).
 
 ## Data Preparation
 Berikut adalah teknik-teknik yang digunakan pada tahap ini:
@@ -52,7 +52,6 @@ Berikut adalah teknik-teknik yang digunakan pada tahap ini:
 | NObeyesdad | 0.024908 | 0.229053 | 0.038986 | 0.387643 | 0.313667                       |
 
 ---
-
 
 |             |     FAVC |     FCVC |       NCP |     CAEC |     SMOKE |     CH2O |       SCC |
 |-------------|---------:|---------:|----------:|---------:|----------:|---------:|----------:|
