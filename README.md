@@ -108,6 +108,7 @@ Ketiga algoritma yang akan digunakan, antara lain:
 
 ## Evaluasi Model
 Metrik yang digunakan adalah _Mean Squarre Error_ (MSE) yang menghitung jumlah selisih kuadrat rata-rata nilai sebenarnya dengan nilai prediksi. MSE didefinisikan dalam persamaan berikut
+
 $$
 \text{MSE} = \frac{1}{N} \sum_{i=1}^n (y_i - \hat{y}_{\text{pred}_i})^2
 $$
