@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning - Paulinus Alan Sanjaya Jamlu
+# Proyek Machine Learning - Paulinus Alan Sanjaya Jamlu
 ## Domain Proyek
 Jumlah penderita obesitas di seluruh dunia lebih dari satu miliar orang. Berdasarkan penelitian yang dipublikasikan dalam jurnal The Lancet, data dari tahun 2022 hingga tahun terakhir yang dimasukkan dalam analisis menunjukkan bahwa ada 879 juta orang dewasa dan 159 juta anak-anak yang mengalami obesitas atau kelebihan berat badan.
 
